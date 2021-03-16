@@ -12,39 +12,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <title>GI-GoMekanik Web App</title>
 
-    <link rel="shortcut icon" href="<?= base_url('images/GoMekanik-logo.png'); ?>">
+    <?= $this->include('layout/partial/css'); ?>
+    <!-- DataTable -->
+    <!-- <link rel="stylesheet" href="<//?= base_url(); ?>/template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"> -->
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="<?= base_url('template/plugins/fontawesome-free/css/all.min.css'); ?>">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?= base_url('template/dist/css/adminlte.min.css'); ?>">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <?= $this->include('layout/partial/js'); ?>
+    
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <?= $this->include('layout/partial/navbar'); ?>
+        <!-- <//?= view_cell('App\Controllers\ViewCells\NavBar::apps'); ?> -->
 
-        <?= $this->include('layout/partial/left_sidebar'); ?>
+        <?= view_cell('App\Controllers\ViewCells\LeftSideBar::menus', ['id' => $idRole]); ?>
 
         <?= $this->renderSection('content'); ?>
 
         <?= $this->include('layout/partial/footer'); ?>
 
         <?= $this->include('layout/partial/right_sidebar'); ?>
-    </div>
 
-    <!-- jQuery -->
-    <script src="<?= base_url('template/plugins/jquery/jquery.min.js'); ?>"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?= base_url('template/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
-    <!-- AdminLTE App -->
-    <script src="<?= base_url('template/dist/js/adminlte.min.js'); ?>"></script>
-    <!-- demo.js-->
-    <script src="<?= base_url('template/dist/js/demo.js'); ?>"></script>
+        <div id="sidebar-overlay"></div>
+    </div>
 
     
 </body>

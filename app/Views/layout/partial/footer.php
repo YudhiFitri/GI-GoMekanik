@@ -5,5 +5,5 @@
     </div>
     <!-- Default to the left -->
     <!-- <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved. -->
-    <strong>Copyright &copy; 2021-<?= date('Y'); ?> GI-GoMekanik. All right reserved. </strong>
+    <strong>Copyright &copy; 2021-<?= date('Y'); ?><a href="#"> GI-GoMekanik.</a> All right reserved. </strong>
 </footer>

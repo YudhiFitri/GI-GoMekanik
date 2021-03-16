@@ -13,7 +13,7 @@
                 <img src="<?= base_url(); ?>/images/user.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $userName; ?></a>
+                <a href="#" class="d-block"><?= $apps[0]['user_name']; ?></a>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="<?= site_url(); ?>/Dashboard" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -33,16 +33,16 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon <?= $role[0]['icon']; ?>"></i>
-                        <p><?= $role[0]['menu']; ?></p>
+                        <i class="nav-icon <?= $apps[0]['icon']; ?>"></i>
+                        <p><?= $apps[0]['menu']; ?></p>
                         <i class="fas fa-angle-left right"></i>
                     </a>
-                    <?php foreach ($role as $rule) : ?>
+                    <?php foreach ($apps as $app) : ?>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= site_url($rule['controller'] . "/app//" . $rule['id_app']); ?>" class="nav-link">
+                                <a href="<?= site_url($app['controller'] . '/app//' . $app['id_app']); ?>" class="nav-link">
                                     <i class="fas fa-arrow-circle-right nav-icon"></i>
-                                    <p><?= $rule['sub_menu']; ?></p>
+                                    <p><?= $app['sub_menu']; ?></p>
                                 </a>
                             </li>
                         </ul>

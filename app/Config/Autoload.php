@@ -42,6 +42,9 @@ class Autoload extends AutoloadConfig
 	public $psr4 = [
 		APP_NAMESPACE => APPPATH, // For custom app namespace
 		'Config'      => APPPATH . 'Config',
+		'Modules\Admin' => ROOTPATH . 'Modules/Admin',
+		'Modules\IE' => ROOTPATH . 'Modules/Ie',
+		'Modules\Mekanik' => ROOTPATH . 'Modules/Mekanik'
 	];
 
 	/**
