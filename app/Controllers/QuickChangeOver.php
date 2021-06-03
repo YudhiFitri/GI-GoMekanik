@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+// use App\Controllers\MyController;
 
 use App\Models\ViewRoleRuleModel;
 use App\Models\AppModel;
@@ -19,9 +20,11 @@ use App\Models\MachineBreakdownModel;
 use App\Models\DeviceTokensModel;
 
 class QuickChangeOver extends BaseController
+// class QuickChangeOver extends MyController
 {
     public function __construct()
     {
+        // parent::__construct();
         $this->rule_model = new ViewRoleRuleModel();
         $this->app_model = new AppModel();
         $this->role_model = new RoleModel();
@@ -36,6 +39,13 @@ class QuickChangeOver extends BaseController
 
         $this->tokenModel = new DeviceTokensModel();
     }
+
+    // public function index()
+    // {
+    //     $data = parent::app($id = null);
+
+    //     return view('Dashboard/qco_view', $data);
+    // }
 
     public function app($id = null)
     {
@@ -198,7 +208,7 @@ class QuickChangeOver extends BaseController
                 'jenis_barang' => $det['jenis_barang'],
                 'merk' => $det['merk'],
                 'no_seri' => $det['no_seri'],
-                'status' => 'qco...'
+                'status' => 'QCO...'
             ];
             // array_push($dataForDetailQCO, $data);
             $detailQCOModel = $this->qcoDetailModel;

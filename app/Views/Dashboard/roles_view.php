@@ -38,30 +38,32 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table id="tableRoles" class="table table-striped table-bordered" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Can Create Roles</th>
-                                        <th>Can Create Rules</th>
-                                        <th>Can Create Users</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Can Create Roles</th>
-                                        <th>Can Create Rules</th>
-                                        <th>Can Create Users</th>
-                                        <th></th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <div class="responsive">
+                                <table id="tableRoles" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Can Create Roles</th>
+                                            <th>Can Create Rules</th>
+                                            <th>Can Create Users</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Can Create Roles</th>
+                                            <th>Can Create Rules</th>
+                                            <th>Can Create Users</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
 
                         </div>
                     </div>
@@ -124,7 +126,6 @@
 <!-- SweetAlert2 -->
 <link rel="stylesheet" href="<?= base_url(); ?>/template/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
-
 <!-- DataTable -->
 <link rel="stylesheet" href="<?= base_url(); ?>/template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="<?= base_url(); ?>/template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -154,7 +155,6 @@
             timer: 3000
         });
 
-        
         var id;
         var name;
         var description;
@@ -163,6 +163,7 @@
         var canCreateUser = 0;
 
         var dataTable = $('#tableRoles').DataTable({
+            responsive: true,
             dom: '<"toolbar">frtip',
             ajax: '<?= site_url(); ?>/Roles/getAllRole',
             columns: [{
@@ -195,7 +196,6 @@
                 {
                     data: null,
                     render: function(data, type, row, meta) {
-
                         return "<div class='btn-group'>" +
                             "<button type='button' class='btn btn-primary'>Action</button>" +
                             "<button type='button' class='btn btn-primary dropdown-toggle dropdown-icon' data-toggle='dropdown' aria-expanded='false'></button>" +
@@ -235,7 +235,7 @@
             $('#modalRole').modal('show');
         });
 
-        function clearModal(){
+        function clearModal() {
             $('.name').val('');
             $('.description').val('');
             $('input[name="can_create_role"]').bootstrapSwitch('state', false);
@@ -286,7 +286,7 @@
             }
         });
 
-        function addNewRole(){
+        function addNewRole() {
             let dataAddRole = {
                 'name': $('.name').val(),
                 'description': $('.description').val(),
@@ -294,7 +294,7 @@
                 'can_create_rule': canCreateRule,
                 'can_create_user': canCreateUser
             };
-            
+
             $.ajax({
                 type: "POST",
                 url: "<?= site_url(); ?>/Roles/addDataRole",
@@ -312,7 +312,7 @@
                     clearModal();
                     $('.name').focus();
                 }
-            });            
+            });
         }
 
         function updateRole() {
@@ -339,35 +339,35 @@
                         title: 'Data Role berhasil di-Update'
                     });
                     reloadTable();
-                    $('#modalRole').modal('hide'); 
+                    $('#modalRole').modal('hide');
                 }
             });
         }
 
-        function reloadTable(){
-            dataTable.ajax.reload(null,false);
+        function reloadTable() {
+            dataTable.ajax.reload(null, false);
         }
 
-        $('#btnDelete').click(function(){
+        $('#btnDelete').click(function() {
             let idRole = $('#deleteId').val();
 
             $.ajax({
                 url: '<?= site_url(); ?>/Roles/deleteRole/' + idRole,
                 dataType: 'json'
-            }).done(function(retVal){
+            }).done(function(retVal) {
                 console.log('retVal: ', retVal)
-                if(retVal.status == true){
+                if (retVal.status == true) {
                     Toast.fire({
                         icon: 'success',
                         title: retVal.msg
                     });
                     $('#modalDelete').modal('hide');
-                    reloadTable();                    
-                }else{
+                    reloadTable();
+                } else {
                     Toast.fire({
                         icon: 'warning',
                         title: retVal.msg
-                    });                    
+                    });
                 }
             })
         })
@@ -375,7 +375,7 @@
     });
 
     function editRole(id) {
-        status="edit";
+        status = "edit";
         $.ajax({
             type: 'GET',
             url: '<?= site_url(); ?>/Roles/getRole/' + id,
@@ -390,18 +390,15 @@
                 $('input[name="can_create_user"]').bootstrapSwitch('state', (dt.can_create_user == 0 ? false : true));
                 $('#status').html(status);
 
-                $('#modalRole').modal('show');                
+                $('#modalRole').modal('show');
             }
         });
     }
 
-    function deleteRole(id){
+    function deleteRole(id) {
         $('#deleteId').val(id);
         $('#modalDelete').modal('show');
     }
-
 </script>
-
-
 
 <?= $this->endSection(); ?>

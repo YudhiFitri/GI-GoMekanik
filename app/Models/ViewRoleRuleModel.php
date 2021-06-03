@@ -24,6 +24,7 @@ class ViewRoleRuleModel extends Model
 
     public function getRuleByRole($id)
     {
+        // $this->distinct();
         $rst = $this->where('id_role', $id)->findAll();
 
         return $rst;

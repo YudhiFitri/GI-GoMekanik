@@ -10,7 +10,7 @@ class QCODetailModel extends Model
     protected $primaryKey = 'id_qco_detail';
     protected $allowedFields = [
         'id_qco_detail', 'qco', 'barcode',
-        'jenis_barang', 'merk', 'no_seri'
+        'jenis_barang', 'merk', 'no_seri', 'status'
     ];
 
     public function saveDetailQCO($data)
