@@ -32,9 +32,12 @@ class Database extends Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
+		// 'hostname' => 'localhost',
+		'hostname' => '192.168.10.3',
+		// 'username' => 'root',
+		'username' => 'manager',
+		// 'password' => '',
+		'password' => 'Intimates@2020',
 		'database' => 'gomekanik',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
@@ -52,9 +55,12 @@ class Database extends Config
 
 	public $db1 = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
+		// 'hostname' => 'localhost',
+		'hostname' => '192.168.10.3',
+		// 'username' => 'root',
+		'username' => 'manager',
+		// 'password' => '',
+		'password' => 'Intimates@2020',
 		'database' => 'ams',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
@@ -71,12 +77,15 @@ class Database extends Config
 		'failover' => [],
 		'port'     => 3306,
 	];
-	
+
 	public $db2 = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
+		// 'hostname' => 'localhost',
+		'hostname' => '192.168.10.3',
+		// 'username' => 'root',
+		'username' => 'manager',
+		// 'password' => '',
+		'password' => 'Intimates@2020',
 		'database' => 'productionreport',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
@@ -92,7 +101,7 @@ class Database extends Config
 		'strictOn' => false,
 		'failover' => [],
 		'port'     => 3306,
-	];	
+	];
 
 	/**
 	 * This database connection is used when
@@ -129,8 +138,7 @@ class Database extends Config
 		// Ensure that we always set the database group to 'tests' if
 		// we are currently running an automated test suite, so that
 		// we don't overwrite live data on accident.
-		if (ENVIRONMENT === 'testing')
-		{
+		if (ENVIRONMENT === 'testing') {
 			$this->defaultGroup = 'tests';
 		}
 	}
