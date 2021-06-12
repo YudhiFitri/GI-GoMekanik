@@ -25,8 +25,9 @@ class App extends BaseConfig
 	 */
 	// public $baseURL = 'http://localhost:8080/';
 	// public $baseURL = 'http://localhost/GI-GoMekanik/public/';
-	public $baseURL = 'http://192.168.10.81/GI-GoMekanik/public/index.php/';
+	// public $baseURL = 'http://192.168.10.81/GI-GoMekanik/public/index.php/';
 	// public $baseURL = 'http://192.168.10.81/GI-GoMekanik/';
+	public $baseURL = 'http://192.168.10.81/GI-GoMekanik/public/';
 	// public $baseURL = 'https://GI-GoMekanik.com/';
 
 	/**
