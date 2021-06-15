@@ -40,6 +40,9 @@ Options All -Indexes
 	# Ensure Authorization header is passed along
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+	RewriteRule ^$ public/ [L]
+	RewriteRule (.*) public/$1[L] 
 </IfModule>
 
 <IfModule !mod_rewrite.c>
